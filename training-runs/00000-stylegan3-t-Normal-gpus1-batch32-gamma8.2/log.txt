@@ -1,0 +1,64 @@
+Loading training set...
+C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\torch\utils\data\sampler.py:74: UserWarning: `data_source` argument is not used and will be removed in 2.2.0.You may still have custom implementation that utilizes it.
+  warnings.warn(
+C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\torch\utils\data\dataloader.py:668: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+
+Num images:  1298
+Image shape: [3, 256, 256]
+Label shape: [0]
+
+Constructing networks...
+Traceback (most recent call last):
+  File "C:\Users\monkj\BIOM426Final\stylegan3\train.py", line 286, in <module>
+    main() # pylint: disable=no-value-for-parameter
+    ~~~~^^
+  File "C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\click\core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\click\core.py", line 1406, in main
+    rv = self.invoke(ctx)
+  File "C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\click\core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\click\core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+  File "C:\Users\monkj\BIOM426Final\stylegan3\train.py", line 281, in main
+    launch_training(c=c, desc=desc, outdir=opts.outdir, dry_run=opts.dry_run)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\monkj\BIOM426Final\stylegan3\train.py", line 96, in launch_training
+    subprocess_fn(rank=0, c=c, temp_dir=temp_dir)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\monkj\BIOM426Final\stylegan3\train.py", line 47, in subprocess_fn
+    training_loop.training_loop(rank=rank, **c)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\monkj\BIOM426Final\stylegan3\training\training_loop.py", line 152, in training_loop
+    G = dnnlib.util.construct_class_by_name(**G_kwargs, **common_kwargs).train().requires_grad_(False).to(device) # subclass of torch.nn.Module
+  File "C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\torch\nn\modules\module.py", line 1371, in to
+    return self._apply(convert)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\torch\nn\modules\module.py", line 930, in _apply
+    module._apply(fn)
+    ~~~~~~~~~~~~~^^^^
+  File "C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\torch\nn\modules\module.py", line 930, in _apply
+    module._apply(fn)
+    ~~~~~~~~~~~~~^^^^
+  File "C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\torch\nn\modules\module.py", line 930, in _apply
+    module._apply(fn)
+    ~~~~~~~~~~~~~^^^^
+  File "C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\torch\nn\modules\module.py", line 957, in _apply
+    param_applied = fn(param)
+  File "C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\torch\nn\modules\module.py", line 1357, in convert
+    return t.to(
+           ~~~~^
+        device,
+        ^^^^^^^
+        dtype if t.is_floating_point() or t.is_complex() else None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        non_blocking,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\torch\cuda\__init__.py", line 403, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled

@@ -1,4 +1,4 @@
-import os
+import json, os
 from PIL import Image
 
 INPUT_DIR = "train_images"
@@ -6,6 +6,14 @@ OUTPUT_DIR = "train_ready"
 TARGET_RES = 256
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+name_dict = {}
+class_dict = {
+    "Normal": 1,
+    "Cataract": 2,
+    "Conjunctivitis": 3,
+    "Uveitis": 4,
+    "WarpedEyelid": 5,
+}
 
 def center_crop(img):
     w, h = img.size
@@ -26,7 +34,13 @@ for folder in os.listdir(INPUT_DIR):
         img = center_crop(img)
         img = img.resize((TARGET_RES, TARGET_RES), Image.LANCZOS)
 
-        outname = os.path.splitext(fname)[0] + ".png"  # StyleGAN prefers PNG
-        new_path = os.path.join(OUTPUT_DIR, folder)
-        os.makedirs(new_path, exist_ok=True)
-        img.save(os.path.join(OUTPUT_DIR, folder, outname))
+        outname = os.path.splitext(fname)[0] + "_" + folder + ".png"  # StyleGAN prefers PNG
+        img.save(os.path.join(OUTPUT_DIR, outname))
+        name_dict[outname] = class_dict[folder]
+
+dataset_json = {
+    "labels": name_dict,
+    "label_dim": 5
+}
+with open(os.path.join(OUTPUT_DIR, "dataset.json"), "w") as f:
+    json.dump(dataset_json, f, indent=2)

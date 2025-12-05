@@ -1,0 +1,11 @@
+Loading training set...
+C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\torch\utils\data\sampler.py:74: UserWarning: `data_source` argument is not used and will be removed in 2.2.0.You may still have custom implementation that utilizes it.
+  warnings.warn(
+C:\Users\monkj\AppData\Roaming\Python\Python314\site-packages\torch\utils\data\dataloader.py:668: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+
+Num images:  1298
+Image shape: [3, 256, 256]
+Label shape: [0]
+
+Constructing networks...
